@@ -3,6 +3,9 @@ const puppeteer = require('puppeteer');
 
 const siteAlvo = 'https://www.buscape.com.br/pc-computador';
 
+const timestamp = new Date().getTime();
+
+
 (async () => {
     const browser = await puppeteer.launch({
         //headless: false,
@@ -25,9 +28,13 @@ const siteAlvo = 'https://www.buscape.com.br/pc-computador';
     await page.waitForSelector('#__next > div.SearchPage_SearchPageContainer__xpPgJ.container-lg > div > div.Filters_Filters__3C2Tt.Filters_visible__1o3ra.col-xl-3.col-lg-3 > div.Filters_Filters__FilterButtonContainer__3L9LR > button');
     await page.click('#__next > div.SearchPage_SearchPageContainer__xpPgJ.container-lg > div > div.Filters_Filters__3C2Tt.Filters_visible__1o3ra.col-xl-3.col-lg-3 > div.Filters_Filters__FilterButtonContainer__3L9LR > button');
 
-    await page.waitForTimeout('15000')
-    await page.screenshot({ path: 'pc-consulta-hoje.png', fullPage: true })
-    await page.pdf({ path: 'hn.pdf', format: 'a4' });
+    await page.waitForTimeout('5000')
+    await page.evaluate(() => {
+        window.scrollBy(0, window.innerHeight);
+    });
+    await page.waitForTimeout('5000')
+    await page.screenshot({ path: `Relatorio-${timestamp}.png`, fullPage: true })
+    await page.pdf({ path: `Relatorio-${timestamp}.pdf`, format: 'a4' });
 
 
     await browser.close();
