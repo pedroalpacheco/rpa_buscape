@@ -2,10 +2,10 @@
   "name": "rpa_buscape",
   "version": "1.0.0",
   "description": "Automação de consulta ao buscape",
-  "main": "index.js",
+  "main": "index2.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node index.js"
+    "start": "node index2.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/pedroalpacheco/rpa_buscape#readme",
   "dependencies": {
+    "inquirer": "^8.1.5",
     "puppeteer": "^10.2.0"
   }
 }

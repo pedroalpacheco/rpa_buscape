@@ -8,7 +8,7 @@ const timestamp = new Date().getTime();
 
 (async () => {
     const browser = await puppeteer.launch({
-        //headless: false,
+        headless: false,
         defaultViewport: null,
     });
     const page = await browser.newPage();
@@ -34,9 +34,9 @@ const timestamp = new Date().getTime();
     });
     await page.waitForTimeout('35000')
     await page.screenshot({ path: `Relatorio-${timestamp}.png`, fullPage: true })
-    await page.pdf({ path: `Relatorio-${timestamp}.pdf`, format: 'a4' });
-    await console.log(`Relatorios criados: Relatorio-${timestamp}.png / Relatorio-${timestamp}.pdf`)
+    /*await page.pdf({ path: `Relatorio-${timestamp}.pdf`, format: 'a4' });
+    await console.log(`Relatorios criados: Relatorio-${timestamp}.png / Relatorio-${timestamp}.pdf`)*/
 
 
-    await browser.close();
+   // await browser.close();
 })();
