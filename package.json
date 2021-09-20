@@ -2,10 +2,10 @@
   "name": "rpa_buscape",
   "version": "1.0.0",
   "description": "Automação de consulta ao buscape",
-  "main": "index2.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index2.js"
+    "start": "node main.js"
   },
   "repository": {
     "type": "git",
