@@ -1,4 +1,18 @@
 const inquirer = require('inquirer');
+
+const urlAlvo = "https://www.buscape.com.br/pc-computador/";
+
+function sanitizar(variavel) {
+    const variavelVirgulas = variavel.replace(/,/gi, "");
+    const variavelChavesEsq = variavelVirgulas.replace(/\[/gi, "");
+    const variavelChavesDir = variavelChavesEsq.replace(/\]/gi, "");
+    const variavelAspas = variavelChavesDir.replace(/"/gi, "");
+
+    return variavelAspas
+
+
+};
+
 inquirer
     .prompt([
         {
@@ -37,5 +51,12 @@ inquirer
     ])
     .then((answers) => {
         //console.log(JSON.stringify(answers, null, '  '));
-        console.log(answers);
+        //console.log(JSON.stringify(answers));
+        //console.log(answers);
+        const urlString = JSON.stringify(answers.consultapc)
+        const urlFuncional = sanitizar(urlString)
+        console.log(urlAlvo + urlFuncional)
+        //console.log(urlAlvo + urlFuncional.replace(/,/gi, ""));
     });
+
+    
