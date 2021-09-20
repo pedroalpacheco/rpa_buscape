@@ -1,3 +1,5 @@
+//https://www.npmjs.com/package/inquirer
+
 const inquirer = require('inquirer');
 
 const urlAlvo = "https://www.buscape.com.br/pc-computador/";
