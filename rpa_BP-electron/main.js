@@ -4,13 +4,14 @@ const { app, BrowserWindow} = require('electron');
 function createWindow() {
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        width: 800,
-        height: 500,
+        width: 600,
+        height: 600,
         resizable: false,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
             enableRemoteModule: true,
+            nativeWindowOpen:true
         },
     })
 
@@ -18,8 +19,8 @@ function createWindow() {
     mainWindow.loadFile('index.html');
     mainWindow.removeMenu();
 
-    // Open the DevTools.
-    //mainWindow.webContents.openDevTools()
+    // Abre o DevTools.
+    mainWindow.webContents.openDevTools()
 };
 
 
