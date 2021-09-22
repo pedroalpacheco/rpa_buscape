@@ -6,7 +6,7 @@ const urlOrigin = "https://www.buscape.com.br/pc-computador/";
 
 function createWindow() {
     mainWindow = new BrowserWindow({
-        width: 600,
+        width: 300,
         height: 600,
         resizable: false,
         webPreferences: {
@@ -53,7 +53,8 @@ ipcMain.on('canal1', (e, args) => {
         const urlFinal = urlOrigin + urlSanitizada
 
         if (urlFinal === urlOrigin) {
-            console.log('Não foi adicionado parametros!')
+            const item = 'Favor CLICAR em algum item de PESQUISA!'
+            mainWindow.webContents.send('resultado', item);
         } else {
             const relatorio = sanitizar.relatorio(urlSanitizada);
             rpaMod(urlFinal, relatorio);

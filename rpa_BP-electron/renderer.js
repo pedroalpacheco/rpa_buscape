@@ -15,3 +15,9 @@ document.getElementById("formulario").addEventListener("submit", function (e) {
     ipcRenderer.send('canal1', [prosi3, prosi5, prosi7, osLinux, osWindez])
 
 });
+
+ipcRenderer.on('resultado', (event, item) => {
+    const myNotification = new Notification('ALERTA', {
+        body: `${item}`
+    })
+});
