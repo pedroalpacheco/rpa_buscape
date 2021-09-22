@@ -12,13 +12,7 @@ document.getElementById("formulario").addEventListener("submit", function (e) {
     //SO
     let osLinux = document.querySelector(".form-check-inputOSLinux").checked;
     let osWindez = document.querySelector(".form-check-inputOSWindows").checked;
-    
-        console.log(`
-            Processador i3:${prosi3}
-            Processador i5:${prosi5}
-            Processador i7:${prosi7}
-            Processador LINUX:${osLinux}
-            Processador WIN10:${osWindez}
-            
-            `)
+
+    ipcRenderer.send('canal1', [prosi3, prosi5, prosi7, osLinux, osWindez])
+
 });
