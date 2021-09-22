@@ -1,6 +1,10 @@
 const puppeteer = require('puppeteer');
+const { app, shell } = require('electron');
+const fs = require('fs');
 
 const timestamp = new Date().getTime();
+
+const diretorio = app.getPath('documents') + '/RELATORIOS-BUSCAPE-PC/';
 
 async function rpaMod(url, relatorio) {
 
@@ -16,12 +20,19 @@ async function rpaMod(url, relatorio) {
     await page.evaluate(() => {
         window.scrollBy(0, 15000);
     });
-    await page.waitForTimeout('35000')
-    await page.screenshot({ path: `Relatorio-${relatorio}-${timestamp}.png`, fullPage: true })
-    await page.pdf({ path: `Relatorio-${relatorio}-${timestamp}.pdf`, format: 'a4' });
-    await console.log(`Relatorios criados: Relatorio-${relatorio}-${timestamp}.png / Relatorio-${relatorio}-${timestamp}.pdf`)
+    await page.waitForTimeout('35000');
+    if (!fs.existsSync(diretorio)) {
+        fs.mkdirSync(diretorio);
+    }
+    await page.screenshot({ path: `${diretorio}Relatorio-${relatorio}-${timestamp}.png`, fullPage: true })
+    await page.pdf({ path: `${diretorio}Relatorio-${relatorio}-${timestamp}.pdf`, format: 'a4' });
+    await console.log(`${diretorio}Relatorios criados: Relatorio-${relatorio}-${timestamp}.png / ${diretorio}Relatorio-${relatorio}-${timestamp}.pdf`)
 
     await browser.close();
+    setTimeout(function () {
+        shell.openPath(diretorio)
+    }, 3000);
 };
+
 
 module.exports = rpaMod;
