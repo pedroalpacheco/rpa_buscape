@@ -2,7 +2,6 @@ const { ipcRenderer } = require('electron');
 
 document.getElementById("formulario").addEventListener("submit", function (e) {
     e.preventDefault()
-    //const form = document.getElementById("formulario");
     
     //Processador;
     let prosi3 = document.querySelector(".form-check-inputi3").checked

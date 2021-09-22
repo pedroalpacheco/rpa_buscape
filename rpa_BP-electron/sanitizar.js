@@ -9,7 +9,7 @@ function sanitizar(variavel) {
         return variavelAspas
 
     } else {
-        return vazio
+        return false
       }
 
 

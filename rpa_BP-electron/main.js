@@ -4,7 +4,6 @@ const sanitizar = require('./sanitizar');
 const urlOrigin = "https://www.buscape.com.br/pc-computador/";
 
 function createWindow() {
-    // Create the browser window.
     mainWindow = new BrowserWindow({
         width: 600,
         height: 600,
@@ -25,14 +24,13 @@ function createWindow() {
     //mainWindow.webContents.openDevTools()
 };
 ipcMain.on('canal1', (e, args) => {
+    const argsFalso = [false, false, false, false, false];
 
-    if (!args) {
+    if (args===argsFalso) {
         console.log('Vazio!');
         const item = 'Favor clicar item de PESQUISA!'
         //mainWindow.webContents.send('resultado', item);
     } else {
-        //consultaml(args);
-        //console.log(args)
         let urlAlvo = [];
 
         if (args[0] === true) {
@@ -51,7 +49,15 @@ ipcMain.on('canal1', (e, args) => {
             urlAlvo.push('windows-10/')
         }
         const urlSanitizada = sanitizar(JSON.stringify(urlAlvo));
-        console.log(`${urlOrigin}${urlSanitizada}`)
+        const urlFinal = urlOrigin + urlSanitizada
+
+        if (urlFinal === urlOrigin) {
+            console.log('Não foi adicionado parametros!')
+        } else {
+
+            console.log(`${urlOrigin}${urlSanitizada}`)
+         }
+
     }
 });
 
