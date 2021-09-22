@@ -9,6 +9,7 @@ function createWindow() {
         width: 300,
         height: 600,
         resizable: false,
+        icon:'./image/buscapc40.png',
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
