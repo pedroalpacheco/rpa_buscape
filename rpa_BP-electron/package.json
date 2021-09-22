@@ -1,20 +1,54 @@
 {
   "name": "rpa_bp-electron",
   "version": "1.0.0",
-  "description": "",
+  "description": "Gera relatorio de consulta de PC no Buscape",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "watch": "nodemon --exec electron ."
+    "watch": "nodemon --exec electron .",
+    "publica:linux": "sudo electron-builder -l",
+    "publica:win": "electron-builder -w"
   },
-  "keywords": [],
-  "author": "",
+  "build": {
+    "linux": {
+      "target": [
+        "zip",
+        "deb"
+      ],
+      "category": "Settings",
+      "icon": "./image/busca-pc_256.png"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "./image/busca-pc_256.png"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedroalpacheco/rpa_buscape/tree/main/rpa_BP-electron"
+  },
+  "keywords": ["rpa","electron","javascript","nodejs"],
+  "author": "Pedro Al Pacheco <contato@pedropachecodev.com.br>",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pedroalpacheco/rpa_buscape/tree/main/rpa_BP-electron/issues"
+  },
+  "linux": {
+    "category": "Utility",
+    "synopsis": "Relatorio de consulta de PC no Buscape",
+    "target": [
+      "AppImage"
+    ]
+  },
+  "homepage": "https://github.com/pedroalpacheco/rpa_buscape/tree/main/rpa_BP-electron#readme",
   "dependencies": {
     "bootstrap": "^5.1.1",
-    "electron": "^14.0.1",
     "jquery": "^3.6.0",
     "puppeteer": "^10.4.0"
+  },
+  "devDependencies": {
+    "electron": "^14.0.1",
+    "electron-builder": "^22.11.7"
   }
 }
