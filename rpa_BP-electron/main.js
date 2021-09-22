@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const sanitizar = require('./sanitizar');
+const rpaMod = require('./rpaMod');
 
 const urlOrigin = "https://www.buscape.com.br/pc-computador/";
 
@@ -48,14 +49,15 @@ ipcMain.on('canal1', (e, args) => {
         if (args[4] === true) {
             urlAlvo.push('windows-10/')
         }
-        const urlSanitizada = sanitizar(JSON.stringify(urlAlvo));
+        const urlSanitizada = sanitizar.url(JSON.stringify(urlAlvo));
         const urlFinal = urlOrigin + urlSanitizada
 
         if (urlFinal === urlOrigin) {
             console.log('Não foi adicionado parametros!')
         } else {
-
-            console.log(`${urlOrigin}${urlSanitizada}`)
+            const relatorio = sanitizar.relatorio(urlSanitizada);
+            rpaMod(urlFinal, relatorio);
+            
          }
 
     }
