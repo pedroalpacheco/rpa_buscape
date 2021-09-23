@@ -1,6 +1,6 @@
 {
   "name": "rpa_bp-electron",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gera relatorio de consulta de PC no Buscape",
   "main": "main.js",
   "scripts": {
@@ -11,6 +11,7 @@
     "publica:win": "electron-builder -w"
   },
   "build": {
+    "asar": false,
     "linux": {
       "target": [
         "zip",
@@ -28,7 +29,12 @@
     "type": "git",
     "url": "git+https://github.com/pedroalpacheco/rpa_buscape/tree/main/rpa_BP-electron"
   },
-  "keywords": ["rpa","electron","javascript","nodejs"],
+  "keywords": [
+    "rpa",
+    "electron",
+    "javascript",
+    "nodejs"
+  ],
   "author": "Pedro Al Pacheco <contato@pedropachecodev.com.br>",
   "license": "ISC",
   "bugs": {
@@ -45,7 +51,9 @@
   "dependencies": {
     "bootstrap": "^5.1.1",
     "jquery": "^3.6.0",
-    "puppeteer": "^10.4.0"
+    "puppeteer": "^10.4.0",
+    "puppeteer-core": "^10.4.0",
+    "puppeteer-in-electron": "^3.0.5"
   },
   "devDependencies": {
     "electron": "^14.0.1",
