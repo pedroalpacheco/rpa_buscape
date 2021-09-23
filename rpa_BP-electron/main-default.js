@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, Notification } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const sanitizar = require('./sanitizar');
 const rpaMod = require('./rpaMod');
 

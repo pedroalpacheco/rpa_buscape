@@ -1,12 +1,29 @@
 const puppeteer = require('puppeteer');
 const { app, shell } = require('electron');
 const fs = require('fs');
+const ProgressBar = require('electron-progressbar');
 
 const timestamp = new Date().getTime();
 
 const diretorio = app.getPath('documents') + '/RELATORIOS-BUSCAPE-PC/';
 
 async function rpaMod(url, relatorio) {
+    var progressBar = new ProgressBar({
+        indeterminate: false,
+        text: 'Preparando a consulta...',
+        detail: 'Aguarde...'
+    });
+    progressBar
+        .on('completed', function () {
+            console.info(`completo...`);
+            progressBar.detail = 'Tarefa completa. Saindo...';
+        })
+        .on('aborted', function () {
+            console.info(`Fechando...`);
+        })
+        .on('progress', function (value) {
+            progressBar.detail = `Value ${value} out of ${progressBar.getOptions().maxValue}...`;
+        });
 
     const browser = await puppeteer.launch({
         //headless: false,
@@ -30,6 +47,10 @@ async function rpaMod(url, relatorio) {
 
     await browser.close();
     setTimeout(function () {
+        if (!progressBar.isCompleted()) {
+            progressBar.value += 1;
+        }
+        progressBar.setCompleted();
         shell.openPath(diretorio)
     }, 3000);
 };

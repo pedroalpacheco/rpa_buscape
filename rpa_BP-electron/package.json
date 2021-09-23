@@ -1,6 +1,6 @@
 {
   "name": "rpa_bp-electron",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Gera relatorio de consulta de PC no Buscape",
   "main": "main.js",
   "scripts": {
@@ -50,6 +50,7 @@
   "homepage": "https://github.com/pedroalpacheco/rpa_buscape/tree/main/rpa_BP-electron#readme",
   "dependencies": {
     "bootstrap": "^5.1.1",
+    "electron-progressbar": "^2.0.1",
     "jquery": "^3.6.0",
     "puppeteer": "^10.4.0",
     "puppeteer-core": "^10.4.0",
