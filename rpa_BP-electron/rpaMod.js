@@ -8,7 +8,7 @@ const timestamp = new Date().getTime();
 const diretorio = app.getPath('documents') + '/RELATORIOS-BUSCAPE-PC/';
 
 async function rpaMod(url, relatorio) {
-    var progressBar = new ProgressBar({
+    const progressBar = new ProgressBar({
         indeterminate: false,
         text: 'Preparando a consulta...',
         detail: 'Aguarde...'
