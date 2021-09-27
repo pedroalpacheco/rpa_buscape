@@ -17,7 +17,6 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 })
 app.post('/rpa', (req, res) => {
-    //const i3 = req.body.i3x ? true : false
     const i3 = req.body.i3x
     const i5 = req.body.i5x
     const i7 = req.body.i7x
@@ -45,10 +44,15 @@ app.post('/rpa', (req, res) => {
     const urlSanitizada = sanitizar.url(JSON.stringify(urlAlvo));
     const urlFinal = urlOrigin + urlSanitizada
     const relatorio = sanitizar.relatorio(urlSanitizada);
-    rpaMod(urlFinal, relatorio);
+    if (!urlSanitizada) {
+        //console.log('Favor escolher item');
+        //res.send('Item não foi escolhido!');
+        res.redirect('/')
+    } else {
+        rpaMod(urlFinal, relatorio);
+        res.send('Relatorio : ' + urlFinal);
+    }
 
-    //console.log(urlFinal);
-    res.send('Relatorio : ' +urlFinal )
 })
 
 app.listen(port, () => {
