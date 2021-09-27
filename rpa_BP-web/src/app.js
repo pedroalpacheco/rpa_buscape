@@ -45,7 +45,7 @@ app.post('/rpa', (req, res) => {
     const urlFinal = urlOrigin + urlSanitizada
 
     console.log(urlFinal);
-    res.send('FORMULARIO RECEBIDO')
+    res.send('URL : ' +urlFinal )
 })
 
 app.listen(port, () => {
