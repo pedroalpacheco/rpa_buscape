@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node ./src/app.js"
+    "start": "node ./src/app.js",
+    "watch": "nodemon ./src/app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "bootstrap": "^5.1.1",
+    "express": "^4.17.1",
+    "jquery": "^3.6.0"
   }
 }

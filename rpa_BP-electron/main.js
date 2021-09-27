@@ -7,7 +7,7 @@ const urlOrigin = "https://www.buscape.com.br/pc-computador/";
 function createWindow() {
     mainWindow = new BrowserWindow({
         width: 300,
-        height: 600,
+        height: 625,
         resizable: false,
         icon:'./image/buscapc40.png',
         webPreferences: {
