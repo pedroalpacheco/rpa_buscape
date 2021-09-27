@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 const sanitizar = require('./sanitizar');
+const rpaMod = require('./rpaMod');
 
 const port = 3006
 
@@ -43,9 +44,11 @@ app.post('/rpa', (req, res) => {
     }
     const urlSanitizada = sanitizar.url(JSON.stringify(urlAlvo));
     const urlFinal = urlOrigin + urlSanitizada
+    const relatorio = sanitizar.relatorio(urlSanitizada);
+    rpaMod(urlFinal, relatorio);
 
-    console.log(urlFinal);
-    res.send('URL : ' +urlFinal )
+    //console.log(urlFinal);
+    res.send('Relatorio : ' +urlFinal )
 })
 
 app.listen(port, () => {
