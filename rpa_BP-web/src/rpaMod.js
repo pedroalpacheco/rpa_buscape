@@ -19,7 +19,7 @@ async function rpaMod(url, relatorio) {
     });
     
     await page.screenshot({ path: `Relatorio-${relatorio}-${timestamp}.png`, fullPage: true })
-    await page.pdf({ path: `Relatorio-${relatorio}-${timestamp}.pdf`, format: 'a4' });
+    //await page.pdf({ path: `Relatorio-${relatorio}-${timestamp}.pdf`, format: 'a4' });
     //await console.log(`${diretorio}Relatorios criados: Relatorio-${relatorio}-${timestamp}.png / ${diretorio}Relatorio-${relatorio}-${timestamp}.pdf`)
 
     await browser.close();

@@ -53,6 +53,10 @@ app.post('/rpa', (req, res) => {
 
 })
 
+app.get('/download',(req, res) => {
+    res.download('Relatorio-processador-intel-core-i3-processador-intel-core-i5-sistema-operacional-linux-windows-10--1632828803703.pdf')
+})
+
 app.use((req, res, next) => {
     res.status(404).send('<h1>Pagina não encontrada</h1>')
 })
