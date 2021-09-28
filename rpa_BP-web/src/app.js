@@ -45,9 +45,7 @@ app.post('/rpa', (req, res) => {
     const urlFinal = urlOrigin + urlSanitizada
     const relatorio = sanitizar.relatorio(urlSanitizada);
     if (!urlSanitizada) {
-        //console.log('Favor escolher item');
-        //res.send('Item não foi escolhido!');
-        res.redirect('/')
+        res.sendFile(path.join(__dirname + '/noparam.html'));
     } else {
         rpaMod(urlFinal, relatorio);
         res.send('Relatorio : ' + urlFinal);
