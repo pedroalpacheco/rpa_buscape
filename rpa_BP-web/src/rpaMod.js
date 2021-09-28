@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 
-const timestamp = new Date().getTime();
+//const timestamp = new Date().getTime();
 
 async function rpaMod(url, relatorio) {
   
@@ -18,10 +18,8 @@ async function rpaMod(url, relatorio) {
         window.scrollBy(0, 15000);
     });
     
-    await page.screenshot({ path: `Relatorio-${relatorio}-${timestamp}.png`, fullPage: true })
-    //await page.pdf({ path: `Relatorio-${relatorio}-${timestamp}.pdf`, format: 'a4' });
-    //await console.log(`${diretorio}Relatorios criados: Relatorio-${relatorio}-${timestamp}.png / ${diretorio}Relatorio-${relatorio}-${timestamp}.pdf`)
-
+    await page.pdf({ path: `${relatorio}.pdf`, format: 'a4' });
+    
     await browser.close();
 
 };

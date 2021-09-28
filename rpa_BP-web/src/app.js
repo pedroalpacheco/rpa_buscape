@@ -7,6 +7,7 @@ const rpaMod = require('./rpaMod');
 
 const port = 3006
 
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -41,14 +42,20 @@ app.post('/rpa', (req, res) => {
     if (componentes[4] === '') {
         urlAlvo.push('windows-10/')
     }
+    const timestamp = new Date().getTime();
     const urlSanitizada = sanitizar.url(JSON.stringify(urlAlvo));
     const urlFinal = urlOrigin + urlSanitizada
     const relatorio = sanitizar.relatorio(urlSanitizada);
     if (!urlSanitizada) {
         res.sendFile(path.join(__dirname + '/noparam.html'));
     } else {
-        rpaMod(urlFinal, relatorio);
-        res.send('Relatorio : ' + urlFinal);
+        (async () => {
+            const relatorioFinal = await relatorio+timestamp
+            await rpaMod(urlFinal, relatorioFinal);
+            //res.send('Relatorio : ' + urlFinal);
+            await res.download(`${relatorioFinal}.pdf`)
+            
+        })();
     }
 
 })
