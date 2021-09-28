@@ -55,6 +55,10 @@ app.post('/rpa', (req, res) => {
 
 })
 
+app.use((req, res, next) => {
+    res.status(404).send('<h1>Pagina não encontrada</h1>')
+})
+
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
