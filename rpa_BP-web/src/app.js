@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const sanitizar = require('./sanitizar');
 const rpaMod = require('./rpaMod');
+const fs = require('fs');
 
 const port = 3006
 
@@ -12,6 +13,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const urlOrigin = "https://www.buscape.com.br/pc-computador/";
+
+let relatorioFinal;
 
 app.get('/', (req, res) => {
     //res.send('Hello World!')
@@ -50,18 +53,13 @@ app.post('/rpa', (req, res) => {
         res.sendFile(path.join(__dirname + '/noparam.html'));
     } else {
         (async () => {
-            const relatorioFinal = await relatorio+timestamp
+            relatorioFinal = await relatorio+timestamp
             await rpaMod(urlFinal, relatorioFinal);
-            //res.send('Relatorio : ' + urlFinal);
             await res.download(`${relatorioFinal}.pdf`)
             
         })();
     }
 
-})
-
-app.get('/download',(req, res) => {
-    res.download('Relatorio-processador-intel-core-i3-processador-intel-core-i5-sistema-operacional-linux-windows-10--1632828803703.pdf')
 })
 
 app.use((req, res, next) => {
