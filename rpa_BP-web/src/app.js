@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const bodyParser = require('body-parser');
 const sanitizar = require('./sanitizar');
 const rpaMod = require('./rpaMod');
 const fs = require('fs');
@@ -16,7 +15,6 @@ const urlOrigin = "https://www.buscape.com.br/pc-computador/";
 let relatorioFinal;
 
 app.get('/', (req, res) => {
-    //res.send('Hello World!')
     res.sendFile(path.join(__dirname + '/index.html'));
 })
 app.post('/rpa', (req, res) => {
