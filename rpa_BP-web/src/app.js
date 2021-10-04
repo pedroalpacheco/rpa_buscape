@@ -8,9 +8,8 @@ const fs = require('fs');
 
 const port = 3006
 
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 const urlOrigin = "https://www.buscape.com.br/pc-computador/";
 
