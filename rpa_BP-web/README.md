@@ -8,7 +8,7 @@
 
 ## About <a name = "about"></a>
 
-Automação para ambiente CLI, Command Line Interface.
+Automação para ambiente WEB.
 
 
 ### Prerequisites
